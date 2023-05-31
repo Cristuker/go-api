@@ -41,6 +41,19 @@ type ProductServiceInterface interface {
 	Disable(product ProductInterface) (ProductInterface, error)
 }
 
+type ProductReader interface {
+	Get(id string) (ProductInterface, error)
+}
+
+type ProductWriter interface {
+	Save(product ProductInterface) (ProductInterface, error)
+}
+
+type ProductPersistenceInterface interface {
+	ProductReader
+	ProductWriter
+}
+
 func NewProduct() *Product {
 	product := Product{
 		ID: uuid.NewV4().String(),
