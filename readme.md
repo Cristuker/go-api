@@ -8,5 +8,10 @@ Técnologias e métodologias usadas
 * Testes
 * Injeção de dependências
 
+## SQL
+
+```sql
+create table products(id string, name string, price float, status string);
+```
 
 <p align="center">Made whit ❤️ by <strong><a href="https://bento.me/cmsdev" target="blank" >Cristian</></p></strong>
