@@ -6,6 +6,7 @@ import (
 	"testing"
 
 	"github.com/codeedu/go-hexagonal/adapters/db"
+	"github.com/codeedu/go-hexagonal/application"
 	"github.com/stretchr/testify/require"
 )
 
@@ -34,7 +35,7 @@ func createTable(db *sql.DB) {
 }
 
 func createProduct(db *sql.DB) {
-	insert := `insert into products values ("abc", "Product test", 0, "disabled")`
+	insert := `insert into products values ("abc", "Product test", 0.0, "disabled")`
 	stmt, err := db.Prepare(insert)
 
 	if err != nil {
@@ -54,8 +55,30 @@ func TestProductDb_Get(t *testing.T) {
 	require.Nil(t, err)
 
 	require.Equal(t, "Product test", product.GetName())
-	require.Equal(t, float64(0), product.GetPrice())
+	require.Equal(t, 00.0, product.GetPrice())
 	require.Equal(t, "disabled", product.GetStatus())
+}
 
+func TestProductDb_Save(t *testing.T) {
+	setUp()
+	defer Db.Close()
+
+	productDb := db.NewProductDb(Db)
+	product := application.NewProduct()
+	product.Name = "Product test"
+	product.Price = 25
+
+	productResult, err := productDb.Save(product)
+	require.Nil(t, err)
+
+	require.Equal(t, "Product test", productResult.GetName())
+	require.Equal(t, float64(25), productResult.GetPrice())
+	require.Equal(t, "disabled", productResult.GetStatus())
+
+	product.Status = "enabled"
+
+	productResult, err = productDb.Save(product)
+	require.Nil(t, err)
+	require.Equal(t, "enabled", productResult.GetStatus())
 
 }

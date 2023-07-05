@@ -11,7 +11,9 @@ Técnologias e métodologias usadas
 ## SQL
 
 ```sql
-create table products(id string, name string, price float, status string);
+1. create table products(id string, name string, price float, status string);
+
+2. sqlite3 db.sqlite
 ```
 
 <p align="center">Made whit ❤️ by <strong><a href="https://bento.me/cmsdev" target="blank" >Cristian</></p></strong>

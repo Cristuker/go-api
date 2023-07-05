@@ -34,7 +34,7 @@ func (p *ProductDb) Get(id string) (application.ProductInterface, error) {
 }
 
 func (p *ProductDb) create(product application.ProductInterface) (application.ProductInterface, error) {
-	stmt, err := p.db.Prepare(`ìnsert into product (id, name, price, status) values(?,?,?,?)`)
+	stmt, err := p.db.Prepare(`insert into products (id, name, price, status) values(?,?,?,?)`)
 	if err != nil {
 		return nil, err
 	}
