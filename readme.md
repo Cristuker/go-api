@@ -8,6 +8,39 @@ Técnologias e métodologias usadas
 * Testes
 * Injeção de dependências
 
+
+## Adapters
+
+* Web server
+* CLI
+
+## Como configurar
+
+```bash
+// Para criar um container do projeto
+$ docker compose up -d
+
+// Para entrar no container do projeto
+$ docker exec -it  appproduct bash
+
+//Dentro do container para link o sqlite
+$ sqlite3 db.sqlite
+
+```
+
+## Comandos
+
+Para rodar o projeto via CLI
+
+```go
+$ go run main.go cli
+```
+
+Para rodar o projeto via Webserver
+```go
+$ go run main.go http
+```
+
 ## SQL
 
 ```sql
