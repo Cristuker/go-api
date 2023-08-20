@@ -49,4 +49,4 @@ $ go run main.go http
 2. sqlite3 db.sqlite
 ```
 
-<p align="center">Made whit ❤️ by <strong><a href="https://bento.me/cmsdev" target="blank" >Cristian</></p></strong>
+<p align="center">Made with ❤️ by <strong><a href="https://bento.me/cmsdev" target="blank" >Cristian</></p></strong>
